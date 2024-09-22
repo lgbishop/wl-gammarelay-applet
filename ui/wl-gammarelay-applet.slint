@@ -8,14 +8,14 @@ export component ToggleSwitch inherits Rectangle {
 
     HorizontalLayout {
         indicator := Rectangle {
-            border-radius: 3px;
+            border-radius: 0px;
             background: touch.has-hover ? (checked ? #888 : #555) : (checked ? #666 : #444);
             animate background { duration: 100ms; }
 
             bubble := Rectangle {
                 height: parent.height;
                 width: parent.width / 2.5;
-                border-radius: 3px;
+                border-radius: 0px;
                 x: self.a * (indicator.width - bubble.width);
                 property <float> a: checked ? 1 : 0;
                 background: touch.has-hover ? (checked ? #eee : #888) : (checked ? #ddd : #666);
@@ -45,7 +45,7 @@ export component VerticalSlider inherits Rectangle {
     preferred-height: 120px;
     preferred-width: 20px;
 
-    border-radius: 3px;
+    border-radius: 0px;
     background: touch.has-hover ? 
         (touch.pressed ? #666 : #555) :
         (touch.pressed ? #666 : #444);
@@ -53,7 +53,7 @@ export component VerticalSlider inherits Rectangle {
     handle := Rectangle {
         width: parent.width - 2px;
         height: 6px;
-        border-radius: 3px;
+        border-radius: 0px;
         background: touch.pressed ? #eee : touch.has-hover ? #ddd : #aaa;
         y: (root.height - self.height) * root.value/(root.minimum - root.maximum) + root.height - self.height;
         animate y, background { duration: 60ms; }
@@ -102,6 +102,7 @@ component LabeledToggleSwitch inherits HorizontalLayout {
         Text {
             text: root.label;
             font-size: 16px;
+            color: #fff;
         }
     }
 
@@ -135,8 +136,8 @@ component LabeledVerticalSlider inherits VerticalLayout {
 }
 
 export component WindowCaret inherits Path {
-    commands: "M0,0 L2,4 C3,6 5,6 6,4 L8,0"; // rounded triangle
-    // commands: "M0,0 L2,4 C4,8 4,8 6,4 L8,0"; // sharper triangle
+    // commands: "M0,0 L2,4 C3,6 5,6 6,4 L8,0"; // rounded triangle
+    commands: "M0,0 L2,4 C4,8 4,8 6,4 L8,0"; // sharper triangle
 }
 
 export global Parameters {
@@ -226,7 +227,7 @@ export component WlGammaRelayApplet inherits Window {
                 panel-rect := Rectangle {
                     border-width: 2px;
                     border-color: #777;
-                    border-radius: 6px;
+                    border-radius: 0px;
                     background: #111;
                     opacity: Parameters.window-opacity;
                 
@@ -236,6 +237,7 @@ export component WlGammaRelayApplet inherits Window {
                         if Startup.show_value : value := Rectangle {
                             Text {
                                 text: Parameters.value-text;
+                                color: #fff;
                             }
                         }
 
@@ -250,7 +252,7 @@ export component WlGammaRelayApplet inherits Window {
                             spacing: 2px;
 
                             if Startup.show_temperature : temperature := LabeledVerticalSlider {
-                                label: "";
+                                label: "🌡";
                                 param-name: "temperature";
                                 value: Parameters.temperature;
                                 default-value: Startup.default-temperature;
@@ -258,7 +260,7 @@ export component WlGammaRelayApplet inherits Window {
                                 maximum: 1.0;
                             }
                             if Startup.show_brightness : brightness := LabeledVerticalSlider {
-                                label: "";
+                                label: "💡";
                                 param-name: "brightness";
                                 value: Parameters.brightness;
                                 default-value: Startup.default-brightness;
@@ -266,7 +268,7 @@ export component WlGammaRelayApplet inherits Window {
                                 maximum: 1.0;
                             }
                             if Startup.show_gamma : gamma := LabeledVerticalSlider {
-                                label: "𝚪";
+                                label: "γ";
                                 param-name: "gamma";
                                 value: Parameters.gamma;
                                 default-value: Startup.default-gamma;
