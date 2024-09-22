@@ -252,7 +252,7 @@ export component WlGammaRelayApplet inherits Window {
                             spacing: 2px;
 
                             if Startup.show_temperature : temperature := LabeledVerticalSlider {
-                                label: "🌡";
+                                label: "T";
                                 param-name: "temperature";
                                 value: Parameters.temperature;
                                 default-value: Startup.default-temperature;
@@ -260,7 +260,7 @@ export component WlGammaRelayApplet inherits Window {
                                 maximum: 1.0;
                             }
                             if Startup.show_brightness : brightness := LabeledVerticalSlider {
-                                label: "💡";
+                                label: "B";
                                 param-name: "brightness";
                                 value: Parameters.brightness;
                                 default-value: Startup.default-brightness;
@@ -268,7 +268,7 @@ export component WlGammaRelayApplet inherits Window {
                                 maximum: 1.0;
                             }
                             if Startup.show_gamma : gamma := LabeledVerticalSlider {
-                                label: "γ";
+                                label: "G";
                                 param-name: "gamma";
                                 value: Parameters.gamma;
                                 default-value: Startup.default-gamma;
